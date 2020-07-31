@@ -106,15 +106,18 @@ void acc_Frame(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16
 
 
 void acc_Frame_status(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
-  String acc_txt = String(angle);
+  String acc_txt = String((int)angle) + "°";
   display->setTextAlignment(TEXT_ALIGN_CENTER);
   display->setFont(ArialMT_Plain_24); //24
   display->drawString(screenCenterX + x , screenCenterY + y, acc_txt );
 }
 
+
+
 // This array keeps function pointers to all frames
 // frames are the single views that slide in
-FrameCallback frames[] = { acc_Frame_status, acc_Frame };
+//FrameCallback frames[] = { acc_Frame_status, acc_Frame };
+FrameCallback frames[] = { acc_Frame_status };
 
 // how many frames are there?
 int frameCount = 1;
